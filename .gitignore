@@ -1,1 +1,2 @@
-src/server/generated/
+src/server/generated/university_pb2.py
+src/server/generated/university_pb2_grpc.py
