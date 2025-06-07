@@ -17,6 +17,8 @@ university.BookService
 university.LoanService
 university.StudentService
 ```
+![image](https://github.com/user-attachments/assets/6f6d9cff-b505-4197-8405-45f291e0863d)
+
 ## ✅ 2. BookService Metotlarını Görüntüleme
 
 ```bash
@@ -34,6 +36,8 @@ service BookService {
   rpc UpdateBook ( .university.UpdateBookRequest ) returns ( .university.Book );
 }
 ```
+![image](https://github.com/user-attachments/assets/c247aeab-18cb-4b5f-a69b-2e04d89f00bb)
+
 ## ✅ 3. Kitap Ekleme
 
 ```bash
@@ -61,6 +65,8 @@ grpcurl -plaintext -d '{
   "stock": 10
 }
 ```
+![image](https://github.com/user-attachments/assets/d19e38f8-15d8-42b0-8312-fa219cdeb120)
+
 
 ## ✅ 4. Kitap Listeleme
 
@@ -84,6 +90,8 @@ grpcurl -plaintext -d '{}' localhost:50051 university.BookService/ListBooks
   ]
 }
 ```
+![image](https://github.com/user-attachments/assets/71c11400-aa74-400f-8688-4060b26b0184)
+
 
 ## ✅ 5. Öğrenci Ekleme
 
@@ -109,6 +117,9 @@ grpcurl -plaintext -d '{
 }
 ```
 
+![image](https://github.com/user-attachments/assets/7c7f3897-d5ee-4726-b9f7-65f044fd4e14)
+
+
 ## ✅ 6. Öğrenci Listeleme
 
 ```bash
@@ -129,3 +140,26 @@ grpcurl -plaintext -d '{}' localhost:50051 university.StudentService/ListStudent
   ]
 }
 ```
+![image](https://github.com/user-attachments/assets/89eab1ce-6bf8-4f30-bdae-0d525fa09d94)
+
+---
+
+## ⚠️ Uyarı: Windows CMD Ortamında JSON Geçme Sorunları
+
+Windows CMD terminalinde, `grpcurl` komutlarında `-d` ile JSON veri göndermek çoğu zaman kaçış karakterleri (`\"`) nedeniyle hataya yol açabilmektedir.
+
+Aşağıdaki nedenlerle bazı komutlar doğrudan CMD ortamında çalışmamaktadır:
+
+- `"` karakterlerinin düzgün kaçırılmaması (`\"`)
+- Çok satırlı JSON'un desteklenmemesi
+- `Too many arguments.` veya `Unexpected token` gibi hatalar alınması
+
+### ✅ Çözüm Önerileri:
+
+- JSON verisini dış bir dosyaya (`book.json`, `student.json`) kaydedip şu şekilde çalıştırmak:
+  ```bash
+  grpcurl -plaintext -d @book.json localhost:50051 university.BookService/CreateBook
+  ```
+- Alternatif olarak Git Bash veya PowerShell kullanmak
+Bu sebeple, bu testlerde verilen komutlar teorik olarak doğrudur ancak CMD üzerinde çalıştırılması yerine dosya veya PowerShell kullanımı önerilir.
+
